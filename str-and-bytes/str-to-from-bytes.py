@@ -7,8 +7,10 @@ class Converter:
     def convert(self, strbt):
         if isinstance(strbt, str):
             return strbt.encode('utf-8')
+        elif isinstance(strbt, bytes):
+            return strbt.decode('utf-8')
         else:
-            return " "
+            raise TypeError
 
 
 class Test(unittest.TestCase):
@@ -26,6 +28,13 @@ class Test(unittest.TestCase):
 
     def test_empty_bytes_return_empty_str(self):
         assert self.conv.convert(b' ') == " "
+
+    def test_5cars_bytes_return_empty_str(self):
+        assert self.conv.convert(b'5cars') == "5cars"
+
+    def test_number_raises_exception(self):
+        with self.assertRaises(TypeError):
+            self.conv.convert(1)
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
