@@ -4,8 +4,12 @@ class Converter:
     def __init__(self):
         pass
 
-    def convert(self, strg):
-        return strg.encode('utf-8')
+    def convert(self, strbt):
+        if isinstance(strbt, str):
+            return strbt.encode('utf-8')
+        else:
+            return " "
+
 
 class Test(unittest.TestCase):
     def setUp(self):
