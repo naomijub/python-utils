@@ -36,6 +36,10 @@ class Test(unittest.TestCase):
         with self.assertRaises(TypeError):
             self.conv.convert(1)
 
+    def test_none_raises_exception(self):
+        with self.assertRaises(TypeError):
+            self.conv.convert(None)
+
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()
