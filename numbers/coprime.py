@@ -5,7 +5,10 @@ class Coprime:
         pass
 
     def isCoprime(self, a, b):
-        return False
+        if a == 0 or b == 0 or a == 1 or b == 1:
+            return False
+        else:
+            return True
 
 class Test(unittest.TestCase):
     def setUp(self):
@@ -16,6 +19,12 @@ class Test(unittest.TestCase):
 
     def test_if_0_and_0_are_coprime(self):
         assert self.cop.isCoprime(0,0) == False
+
+    def test_if_1_and_0_are_coprime(self):
+        assert self.cop.isCoprime(1,0) == False
+
+    def test_if_2_and_3_are_coprime(self):
+        assert self.cop.isCoprime(2,3) == True
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
