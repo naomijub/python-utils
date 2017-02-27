@@ -7,6 +7,8 @@ class Coprime:
     def isCoprime(self, a, b):
         if a == 0 or b == 0 or a == 1 or b == 1:
             return False
+        elif not isinstance(a, int) or not isinstance(b, int):
+            raise TypeError
         else:
             for i in range(2, min(a,b) + 1):
                 if a % i == 0 and b % i == 0:
@@ -34,6 +36,14 @@ class Test(unittest.TestCase):
 
     def test_if_4_and_9_are_coprime(self):
         assert self.cop.isCoprime(4, 9) == True
+
+    def test_str_raises_type_error(self):
+        with self.assertRaises(TypeError):
+            self.cop.isCoprime("5", 9)
+
+    def test_float_raises_type_error(self):
+        with self.assertRaises(TypeError):
+            self.cop.isCoprime(7.5, 9)
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
