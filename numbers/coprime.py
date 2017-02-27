@@ -26,6 +26,9 @@ class Test(unittest.TestCase):
     def test_if_2_and_3_are_coprime(self):
         assert self.cop.isCoprime(2,3) == True
 
+    def test_if_2_and_8_are_coprime(self):
+        assert self.cop.isCoprime(2,8) == False
+
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()
