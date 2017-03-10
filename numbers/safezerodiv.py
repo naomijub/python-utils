@@ -4,10 +4,13 @@ def sdiv(num, div, as_inf):
     try:
         return num / div
     except ZeroDivisionError:
-        if as_inf:
+        if num == 0:
+            raise Exception("Undefined division")
+        elif as_inf:
             return float('inf')
         else:
             raise
+
 
 class Test(unittest.TestCase):
     def setUp(self):
@@ -28,6 +31,7 @@ class Test(unittest.TestCase):
 
     def test_if_return_inf_for_zerodivisionerror(self):
         assert sdiv(3,0, True) == float('inf')
+
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
